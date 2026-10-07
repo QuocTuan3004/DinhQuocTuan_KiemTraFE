@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shopping Cart</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            background: #eaeded;
+        }
+
+        /* header */
+        .header {
+            background: #131921;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search {
+            flex: 1;
+            display: flex;
+        }
+
+            .search input {
+                flex: 1;
+                padding: 9px;
+                border: none;
+                border-radius: 4px 0 0 4px;
+            }
+
+            .search button {
+                background: #febd69;
+                border: none;
+                padding: 0 14px;
+                border-radius: 0 4px 4px 0;
+            }
+
+        .giohang {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+            .giohang i {
+                font-size: 26px;
+            }
+
+        #tongsl {
+            color: #f08804;
+            font-size: 18px;
+            margin-right: 4px;
+        }
+
+        .menu {
+            background: #232f3e;
+            color: white;
+            padding: 8px 20px;
+            font-size: 13px;
+        }
+
+            .menu span {
+                margin-right: 18px;
+            }
+
+        /* nội dung */
+        .main {
+            display: flex;
+            gap: 15px;
+            padding: 15px 20px;
+        }
+
+        .trai {
+            width: 70%;
+        }
+
+        .phai {
+            width: 30%;
+        }
+
+        .box {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .xanh {
+            color: #007185;
+            font-size: 12px;
+        }
+
+        /* một mặt hàng trong giỏ */
+        .item {
+            display: flex;
+            gap: 15px;
+            border-top: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+            .item img { 
+                width: 90px;
+                height: 90px;
+                object-fit: contain;
+            }
+
+        .thongtin {
+            flex: 1;
+        }
+
+        .tensp {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .conhang {
+            color: #007600;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .soluong {
+            margin: 8px 0;
+        }
+
+            .soluong button {
+                width: 26px;
+                height: 24px;
+                border: 1px solid #aaa;
+                background: #f0f2f2;
+                border-radius: 4px;
+            }
+
+            .soluong span {
+                display: inline-block;
+                width: 30px;
+                text-align: center;
+            }
+
+        .gia {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .tong {
+            text-align: right;
+            font-size: 16px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* your items */
+        .tab {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+            .tab span {
+                margin-right: 20px;
+            }
+
+        .anh-xam {
+            width: 80px;
+            height: 80px;
+            background: #ddd;
+        }
+
+        .nutthem {
+            background: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 8px;
+            padding: 3px 10px;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* cột phải */
+        .tamtinh {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .thanhtoan {
+            width: 100%;
+            background: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 8px;
+            padding: 9px;
+            font-size: 13px;
+        }
+
+        .addon {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+            .addon .anh-xam {
+                width: 50px;
+                height: 60px;
+                flex-shrink: 0;
+            }
+
+        .gia-addon {
+            color: #b12704;
+        }
+
+        /* footer */
+        .footer {
+            background: #131921;
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+            .footer b {
+                display: block;
+            }
+
+            .footer p {
+                color: #999;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">amazon</div>
+        <div class="search">
+            <input type="text" placeholder="Search Amazon">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="giohang"><i class="fas fa-shopping-cart"></i> <span id="tongsl">6</span>Cart</div>
+    </div>
+    <div class="menu">
+        <span><i class="fas fa-bars"></i> All</span>
+        <span>Today's Deals</span>
+        <span>Prime Video</span>
+        <span>Buy Again</span>
+        <span>Customer Service</span>
+        <span>Registry</span>
+        <span>Gift Cards</span>
+        <span>Sell</span>
+    </div>
+
+    <div class="main">
+
+        @*bên trái*@
+        <div class="trai">
+            <div class="box">
+                <h2>Shopping Cart</h2>
+                <p class="xanh">Deselect all items</p>
+
+                @*Sản phẩm 1*@
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhN48KtsjzOkx0hzSma1TALPXXo_h5eeI7V7Th-u7C5SjT7CHMam7Pb9cTs21OF_lHlobnygYSOp8TIGVchbXaEhxjI669Ot-De3yTCFsavpwWCDKBmJNrpb_K4FiZbnCeMhxVjbeawbEVYI5N8bCRAjR3XTN1I-NsabO77Vc38d02NwPFAxjlVPEPsq7P4/s569/Top%2030%20m%E1%BA%ABu%20T%C3%BAi%20x%C3%A1ch%20n%E1%BB%AF%20th%E1%BB%9Di%20trang%20c%C3%B4ng%20s%E1%BB%9F1.jpg" alt="túi">
+                    <div class="thongtin">
+                        <p class="tensp">Túi xách [FSD.WG] Túi tote nữ, Túi công sở, Thời trang, Phổ biến, Túi xách 2 chiều, Đi làm hoặc đi học, Sức chứa lớn, Da, Quà tặng sinh nhật </p>
+                        <p class="conhang">In Stock</p>
+                        <input type="checkbox" checked> This is a gift <span class="xanh">Learn more</span>
+                        <div class="soluong">
+                            <button onclick="doiSoLuong(0, -1)">-</button>
+                            <span id="sl0">1</span>
+                            <button onclick="doiSoLuong(0, 1)">+</button>
+                            <span class="xanh">&nbsp; Delete | Save for later | Compare with similar items</span>
+                        </div>
+                    </div>
+                    <div class="gia" id="gia0" data-gia="44.99">$44.99</div>
+                </div>
+
+                @*Sản phẩm 2*@
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="https://bizweb.dktcdn.net/100/110/241/products/z3925265399048-b2bcc88a02d7046cef3a79ede5af1783.jpg?v=1669954802527" alt="giày">
+                    <div class="thongtin">
+                        <p class="tensp">Sang trọng, duyên dáng, 10</p>
+                        <p class="conhang">In Stock</p>
+                        <input type="checkbox" checked> This is a gift <span class="xanh">Learn more</span>
+                        <p>Size: 37 &nbsp; Color: Be, Đen</p>
+                        <div class="soluong">
+                            <button onclick="doiSoLuong(1, -1)">-</button>
+                            <span id="sl1">2</span>
+                            <button onclick="doiSoLuong(1, 1)">+</button>
+                            <span class="xanh">&nbsp; Delete | Save for later | Compare with similar items</span>
+                        </div>
+                    </div>
+                    <div class="gia" id="gia1" data-gia="98.00">$196.00</div>
+                </div>
+
+                @*Sản phẩm 3*@
+                <div class="item">
+                    <input type="checkbox" checked>
+                    <img src="https://cf.shopee.vn/file/sg-11134201-22100-eehya6dlativc1" alt="slide" alt="áo">
+                    <div class="thongtin">
+                        <p class="tensp">Áo blazer tôn dáng nam phong cách Hàn Quốc, tổng tài</p>
+                        <p class="conhang">In Stock</p>
+                        <input type="checkbox" checked> This is a gift <span class="xanh">Learn more</span>
+                        <p>Size: Large &nbsp; Color: Trắng, đen, be</p>
+                        <div class="soluong">
+                            <button onclick="doiSoLuong(2, -1)">-</button>
+                            <span id="sl2">3</span>
+                            <button onclick="doiSoLuong(2, 1)">+</button>
+                            <span class="xanh">&nbsp; Delete | Save for later | Compare with similar items</span>
+                        </div>
+                    </div>
+                    <div class="gia" id="gia2" data-gia="23.99">$71.97</div>
+                </div>
+
+                <div class="tong">Subtotal (<span id="tongsl2">6</span> items): <b id="tongtien">$312.96</b></div>
+            </div>
+
+            <div class="box">
+                <h2>Your Items</h2>
+                <div class="tab"><b>No items saved for later</b> <span>&nbsp;&nbsp;Buy it again</span></div>
+
+                <div class="item">
+                    <img src="https://sneakerdaily.vn/wp-content/uploads/2025/05/Giay-Nike-Free-2025-University-Red-HF1078-600-900x900.jpg" />
+                    <div class="thongtin">
+                        <p class="xanh">Giày Nike Free 2025 ‘University Red’ HF1078-600 </p>
+                        <button class="nutthem">Add to Cart</button>
+                    </div>
+                    <div class="xanh"><b>$43.99</b></div>
+                </div>
+                <div class="item">
+                    <img src="https://cf.shopee.vn/file/fae9cac0651c33f9be6b1e3a43ec6379" alt="slide" />
+                    <div class="thongtin">
+                        <p class="xanh">Nón lưỡi trai MLB xanh lá thêu chữ NY hàng xuất dư cao cấp phong cách Hàn Quốc dành cho nam và nữ</p>
+                        <button class="nutthem">Add to Cart</button>
+                    </div>
+                    <div class="xanh"><b>$29.99</b></div>
+                </div>
+                <div class="item">
+                    <img src="https://img.onelife.vn/NvTXFZSeYzx8Wzm0LaetAxBMgyA53uuekDgg3DvxzKA/rs:fit:1350:1695:1/aHR0cHM6Ly9zdGF0aWMuanVuby52bi9jbXNpbWFnZS9wdWJsaWMvaG9uZ19tazEyOF8xXzIwMjYwNzI4MTUzNDUxLmpwZWc.webp" />
+                    <div class="thongtin">
+                        <p class="xanh">Mắt kính Retro Oval</p>
+                        <button class="nutthem">Add to Cart</button>
+                    </div>
+                    <div class="xanh"><b>$16.50</b></div>
+                </div>
+            </div>
+        </div>
+
+        @*Bên phải*@
+        <div class="phai">
+            <div class="box">
+                <p class="tamtinh">Subtotal (<span id="tongsl3">6</span> items): <b id="tongtien2">$312.96</b></p>
+                <input type="checkbox" checked> This order contains a gift<br><br>
+                <button class="thanhtoan">Proceed to checkout</button>
+            </div>
+
+            <div class="box">
+                <p><b>Popular add-ons:</b> Ships together with items in cart</p><br>
+                <div class="addon"><<img src="https://muaaothun.vn/wp-content/uploads/2024/05/ao-thun-nu-co-tron-basic.jpg" alt="Áo Thun Nữ Cổ Tròn Basic"/>
+                <div><p class="xanh">Áo thun basic</p><p class="gia-addon">$20.99</p><button class="nutthem">Add to cart</button></div></div>
+
+                <div class="addon">
+                    <img src="https://cavatcaocap.com/wp-content/uploads/2020/06/NCDE017-1-500x500.jpg" alt="Nơ Đeo Cổ Nam NCDE017" />
+                    <div><p class="xanh">Nơ nam</p><p class="gia-addon">$27.99</p><button class="nutthem">Add to cart</button></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div><b>Amazon Music</b><p>Stream millions of songs</p><b>Amazon Business</b><p>Everything for your business</p></div>
+            <div><b>Amazon Ads</b><p>Reach customers wherever they spend their time</p><b>AmazonGlobal</b><p>Ship orders internationally</p></div>
+            <div><b>6pm</b><p>Score deals on fashion brands</p><b>Amazon Web Services</b><p>Scalable cloud computing</p></div>
+            <div><b>AbeBooks</b><p>Books, art &amp; collectibles</p><b>Audible</b><p>Listen to books &amp; original audio</p></div>
+            <div><b>Sell on Amazon</b><p>Start a selling account</p><b>Goodreads</b><p>Book reviews &amp; recommendations</p></div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
